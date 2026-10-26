@@ -1,45 +1,26 @@
-# Đại Thành — Thịnh Thế Hoa Hạ
+# Đại Thành — Thịnh Thế Hoa Hạ (bản mới)
 
-## Chạy thử
-- Mở trực tiếp `index.html` bằng trình duyệt, hoặc
-- Đẩy lên GitHub → Settings → Pages → chọn nhánh `main`, thư mục `/ (root)`.
+Game xây thành trấn Trung Hoa đẳng phối, lấy cảm hứng từ Thriving City: Song, chạy thẳng trên trình duyệt (không cần cài, không cần máy chủ).
+
+## Đưa lên GitHub Pages
+1. Tạo repo mới, tải **toàn bộ nội dung thư mục này** lên (file `index.html` phải nằm ở gốc repo).
+2. Vào *Settings → Pages* → Source: *Deploy from a branch* → chọn nhánh `main`, thư mục `/ (root)` → Save.
+3. Đợi ~1 phút, mở `https://<tên-bạn>.github.io/<tên-repo>/`.
+
+Muốn thử trên máy: chạy `python3 -m http.server` trong thư mục này rồi mở `http://localhost:8000`.
+
+## Cách chơi
+- **Một người / Nhiều người → chọn bản đồ** (3 bản đồ có biển, hồ, sông, vách đá bờ nước).
+- Mỗi bản đồ có chỗ lưu riêng cho từng chế độ. Menu hiện *Chơi tiếp* nếu có bản lưu. Tự lưu mỗi năm và khi bấm ⌂; nút 💾 lưu tay.
+- Vào game phải **đặt Trấn Sở (3×3)** lên đất liền trước, lúc đó thời gian mới chạy và 10 cư dân đến.
+- Chuột trái đặt/chọn · kéo chuột để di chuyển · lăn chuột để thu phóng · chuột phải hoặc Esc để hủy · Space tạm dừng.
+
+## Nhiều người (2 người)
+- Chủ phòng: *Nhiều người chơi → Tạo phòng* → chọn bản đồ (hoặc *Chơi tiếp*) → đọc **mã phòng** ở giữa trên cùng, gửi cho bạn.
+- Khách: *Nhiều người chơi* → nhập mã → *Vào phòng*.
+- Hai người xây chung một thành trấn và thấy chuột của nhau (đỏ = chủ phòng, xanh = khách). Chủ phòng chạy mô phỏng, điều khiển tốc độ và lưu game.
+- Dùng WebRTC + PeerJS (máy chủ bắt tay miễn phí của PeerJS), nên **cả hai cần Internet**. Một số mạng công ty/trường chặn WebRTC thì sẽ không vào được phòng.
 
 ## Cấu trúc
-| Thư mục / file | Việc của nó |
-|---|---|
-| `index.html` | Khung trang + danh sách file nạp (thứ tự quan trọng) |
-| `js/core/` | Cấu hình, đổi toạ độ đẳng phối, camera, vẽ hình |
-| `js/world/map.js` | Nền đất |
-| `js/world/objects/*.js` | MỖI LOẠI VẬT THỂ MỘT FILE (cây, nhà...) |
-| `js/data/placements.js` | **Vị trí** đặt vật thể trên bản đồ |
-| `js/ui/menu.js` | Menu chính |
-| `js/network/multiplayer.js` | Chỗ dành cho nhiều người chơi (làm sau) |
-
-## Thêm một vật thể mới (ví dụ: giếng nước)
-1. Tạo `js/world/objects/well.js`, gọi `Game.registerObject('well', { draw(ctx, obj) {...} })`.
-2. Thêm `<script src="js/world/objects/well.js"></script>` vào `index.html` (cùng chỗ với tree.js).
-3. Thêm `{ type: 'well', x: 10, y: 12 }` vào `js/data/placements.js`.
-
-## Lộ trình (theo bản thiết kế v2.0)
-1. ✅ Nền tảng: bản đồ, camera, vật thể, menu
-2. Dân cư + bảng phân bổ nhân lực
-3. Nhà ở, nông nghiệp, kho, chợ, chuỗi cung ứng
-4. Thu chi, lưu/tải, tổng kết cuối năm
-5. Quan lại, trị an, y tế... (Mức 2)
-6. Nhiều người chơi (Mức 3)
-
-## Cập nhật v0.2
-- `js/data/buildings.js`: 31 công trình (theo file thiết kế), vẽ tạm bằng khối màu.
-- `js/sim/sim.js`: thời gian, xây dựng có tiến độ, hỏa hoạn (lan, giếng giảm nguy cơ), người xách nước.
-- `js/fx/fx.js`: lửa, khói, người cứu hỏa, nước té — vẽ bằng code, thay bằng sprite sau.
-- `js/data/music.js` + `assets/audio/`: thêm nhạc. `js/ui/chat.js`: khung chat chế độ nhiều người (bản thử).
-- Điều khiển: chuột trái đặt/chọn, chuột phải hoặc Esc hủy, Space tạm dừng, 1-3 đổi tốc độ.
-
-## Cập nhật v0.3
-- Dân cư + nhà ở + nhân công thật (`js/sim/economy.js`): người dân tự tìm nhà và việc, nhập cư khi có nhà trống, lương thực và việc làm. Chỉnh số nhân công từng công trình trong bảng thông tin (nút − / +).
-- Sản xuất: ruộng → lương thực; nhà đốn gỗ, mỏ đá, mỏ đất sét, mỏ sắt; lò gạch dùng đất sét + gỗ. Hàng đi từ công trình về kho nhờ nhân công kho. Kho đầy/thiếu nguyên liệu/thiếu người đều có thông báo lý do.
-- Lương thực, thuế/lương, danh xưng theo dân số, mở khóa công trình theo dân số. Mùa đông ruộng cho ít.
-- Lính cứu hỏa chỉ ra quân khi trạm cứu hỏa có nhân công.
-- Lưu/tải (localStorage), tự lưu mỗi năm, nút "Tiếp tục" ở menu.
-- Số liệu cân bằng nằm ở `js/data/production.js`.
-- Ảnh động cho đám cháy: xem `js/data/assets.js` (sprite PNG / gif / webm).
+`js/world/map.js` bản đồ (thêm bản đồ ở `Game.maps`) · `js/network/multiplayer.js` phòng 2 người · `js/sim/save.js` lưu game · `js/ui/menu.js` menu · còn lại giữ nguyên như bản cũ (sim, economy, fx, buildings…).
+Công trình lập trấn `hall` khai báo cuối `js/data/buildings.js`.

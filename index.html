@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đại Thành — Thịnh Thế Hoa Hạ</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div id="menu"><div class="seal">大城</div><h1>Đại Thành</h1><p class="sub">Thịnh Thế Hoa Hạ</p><div id="menu-buttons"></div></div>
+<canvas id="game" hidden></canvas><div id="overlay" hidden></div>
+<div id="topbar" hidden><div id="town"></div><div id="date"></div><div id="speed"></div><span id="coord"></span></div>
+<div id="tools" hidden><button id="b-save" title="Lưu">💾</button><button id="b-load" title="Tải bản lưu">📂</button><button id="b-music" title="Nhạc">♪</button><button id="btn-back" title="Về menu">⌂</button></div>
+<div id="room" hidden></div><div id="hint" hidden></div>
+<div id="left" hidden><h3>Thông báo</h3><div id="notes"></div></div>
+<div id="panel" hidden>
+ <div class="chips"><span title="Hạnh phúc">😊 <b id="c-happy"></b></span><span title="Sức khỏe">❤ <b id="c-health"></b></span><span title="Số đám cháy">🔥 <b id="c-fire"></b></span><span title="Chưa có nhà">🏚 <b id="c-home"></b></span></div>
+ <div class="kc">Kêu ca <span id="fists"></span></div>
+ <div class="pp"><div class="face">👫</div><div class="nums">Cư dân <b id="pp"></b> · Chỗ ở <b id="cp"></b><br>Rảnh rỗi <b id="idl"></b><div class="two"><button id="b-job" class="red">Công việc</button><button id="b-pos" class="red">Cương vị</button></div></div></div>
+ <div class="g3"><div>Tài Chính<br>💰 <b id="mo"></b><button id="b-tax"></button></div><div>Thức Ăn<br>🍚 <b id="fo"></b><button id="b-food" class="red">Xem xét kho lúa</button></div><div>Vật Tư<br>📦 <b id="vt"></b><button id="b-stock" class="red">Xem xét kho hàng</button></div></div>
+</div>
+<div id="lens" hidden><button data-l="people" title="Cư dân: ai rảnh rỗi, ai chưa có nhà">🙂</button><button data-l="water" title="Nước / phạm vi chữa cháy">💧</button><button data-l="work" title="Việc làm: số người / chỗ làm">🔨</button><button data-l="house" title="Nhà ở: số người / sức chứa">🏠</button></div>
+<div id="info" hidden></div>
+<div id="bottom" hidden><div id="pop" hidden></div><div id="barrow"><div id="tabs"></div><div id="dia"></div></div><div id="res"></div></div>
+<div id="chat" hidden><div id="chat-log"></div><input id="chat-in" placeholder="Nhập tin nhắn, Enter để gửi" maxlength="200"></div>
+<div id="modal" hidden></div>
+<!-- PeerJS: chỉ để 2 máy tìm thấy nhau khi chơi nhiều người (đã ghim phiên bản) -->
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<!-- Thứ tự nạp: file nào dùng file khác thì nằm sau -->
+<script src="js/core/config.js"></script><script src="js/core/iso.js"></script><script src="js/core/camera.js"></script>
+<script src="js/world/map.js"></script><script src="js/world/registry.js"></script>
+<script src="js/world/objects/tree.js"></script><script src="js/world/objects/building.js"></script>
+<script src="js/data/buildings.js"></script><script src="js/data/music.js"></script><script src="js/data/assets.js"></script><script src="js/data/sprites.js"></script><script src="js/data/production.js"></script>
+<script src="js/world/world.js"></script><script src="js/sim/sim.js"></script><script src="js/sim/economy.js"></script><script src="js/sim/people.js"></script><script src="js/sim/save.js"></script><script src="js/fx/fx.js"></script>
+<script src="js/core/renderer.js"></script><script src="js/audio/music.js"></script>
+<script src="js/network/multiplayer.js"></script><script src="js/ui/chat.js"></script><script src="js/ui/hud.js"></script>
+<script src="js/ui/menu.js"></script><script src="js/main.js"></script>
+</body></html>

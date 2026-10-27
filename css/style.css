@@ -1,0 +1,56 @@
+/* Giao diện giấy cổ: khung nâu, nền giấy vàng nhạt, nút đỏ — theo bố cục Thriving City Song */
+* { box-sizing: border-box; margin: 0; }
+:root { --p: #eadfc4; --b: #8b5a3c; --t: #4a3322; --r: #c0392b; }
+html, body { height: 100%; overflow: hidden; background: #5fb3a5; color: var(--t); font: 13px/1.35 "Noto Serif", "Songti SC", Georgia, serif; }
+button { font: inherit; color: var(--t); background: #f3e9d0; border: 2px solid var(--b); border-radius: 6px; padding: 4px 9px; cursor: pointer; }
+button:hover { background: #fff4d8; } button.on { background: var(--r); color: #fff; border-color: #8b2a20; }
+button:focus-visible { outline: 2px solid var(--r); } button:disabled { opacity: .45; cursor: not-allowed; }
+[hidden] { display: none !important; }
+#menu { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: auto; background: linear-gradient(135deg, #5fb3a5, #e9e6df 65%); }
+.seal { background: var(--r); color: #f6e7c8; font-size: 28px; padding: 8px 10px; border-radius: 4px; letter-spacing: 4px; margin-bottom: 14px; }
+#menu h1 { font-size: clamp(48px, 9vw, 96px); letter-spacing: .14em; color: var(--r); text-shadow: 0 3px 0 #fff8; }
+.sub { font-size: 18px; letter-spacing: .6em; color: var(--b); margin: 4px 0 28px; }
+#menu-buttons { display: flex; flex-direction: column; gap: 12px; width: min(360px, 84vw); }
+#menu-buttons.wide { width: min(760px, 94vw); flex-direction: row; flex-wrap: wrap; justify-content: center; }
+.menu-btn { padding: 12px 18px; font-size: 17px; text-align: left; background: var(--p); }
+.menu-btn small { display: block; font-size: 12px; color: #7a5a3e; margin-top: 3px; }
+.mapc { width: 200px; display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center; background: var(--p); border: 3px solid var(--b); border-radius: 6px; padding: 10px; }
+.mapc canvas { width: 144px; height: 144px; image-rendering: pixelated; border: 2px solid var(--b); } .mapc .menu-btn { width: 100%; text-align: center; font-size: 15px; padding: 6px; }
+.mapc small { font-size: 11px; } .sv { color: var(--r); font-weight: bold; }
+.join { display: flex; gap: 6px; } .join input { flex: 1; min-width: 0; font: inherit; padding: 8px; border: 2px solid var(--b); border-radius: 6px; background: #fff8e6; }
+#game { position: fixed; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+#overlay { position: fixed; inset: 0; pointer-events: none; overflow: hidden; } #overlay > * { position: absolute; }
+.pn, #topbar, #panel, #bottom, #info, #chat, #room, #left { position: fixed; background: var(--p); border: 3px solid var(--b); border-radius: 6px; box-shadow: inset 0 0 0 2px #d2b78c, 0 3px 10px #0004; padding: 6px 8px; }
+#topbar { left: 8px; top: 8px; width: 250px; } #town { font-size: 15px; color: var(--r); font-weight: bold; } #coord { font-size: 11px; color: #7a5a3e; }
+#speed { display: flex; gap: 4px; margin-top: 4px; } #speed button { padding: 2px 10px; }
+#tools { position: fixed; top: 8px; right: 8px; display: flex; gap: 6px; } #tools button { width: 40px; height: 40px; font-size: 18px; padding: 0; background: var(--p); }
+#room { left: 50%; transform: translateX(-50%); top: 8px; font-weight: bold; }
+#hint { position: fixed; left: 50%; transform: translateX(-50%); top: 52px; max-width: 80vw; text-align: center; background: #4a3322e6; color: #f6ecd2; padding: 6px 14px; border-radius: 6px; }
+.n { padding: 6px 8px; margin-bottom: 5px; background: #0005; border-left: 4px solid #888; cursor: pointer; font-size: 12px; } .n small { display: block; color: #cdbb95; }
+.n.warn { border-color: #e0b030; } .n.red { border-color: #e03a2a; background: #5a1a14aa; }
+#info { top: 60px; right: 8px; width: 250px; padding: 10px; } #info p { margin: 3px 0; } #info h3, .box h3 { color: var(--r); margin-bottom: 6px; } .why { color: #b0561e; }
+#chat { right: 8px; bottom: 170px; width: 260px; } #chat-log { height: 110px; overflow: auto; font-size: 12px; margin-bottom: 5px; user-select: text; }
+#chat-in { width: 100%; background: #fff8e6; color: inherit; border: 2px solid var(--b); border-radius: 4px; padding: 5px; }
+#modal { position: fixed; inset: 0; background: #0008; display: flex; align-items: center; justify-content: center; z-index: 9; }
+.box { background: var(--p); border: 3px solid var(--b); border-radius: 6px; padding: 18px; width: min(440px, 92vw); display: flex; flex-direction: column; gap: 10px; }
+.trk { display: flex; flex-direction: column; gap: 4px; max-height: 160px; overflow: auto; } .file { cursor: pointer; color: var(--r); } td { padding: 2px 10px; }
+
+#left { left: 8px; top: 108px; bottom: 310px; width: 300px; background: #3a2a1ccc; color: #f6ecd2; border-color: #5a3a28; overflow: auto; } #left h3 { color: #e8c070; margin-bottom: 6px; }
+#topbar { width: 300px; }
+#panel { left: 8px; bottom: 8px; width: 300px; }
+.chips { display: flex; gap: 4px; margin-bottom: 5px; } .chips span { flex: 1; display: flex; justify-content: space-between; align-items: center; background: #f3e9d0; border: 1px solid #b99c6c; border-radius: 12px; padding: 1px 8px; font-size: 14px; }
+.kc { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; } #fists span { filter: grayscale(1) opacity(.45); font-size: 17px; } #fists span.on { filter: none; }
+.pp { display: flex; gap: 8px; align-items: center; border-top: 1px solid #b99c6c; border-bottom: 1px solid #b99c6c; padding: 4px 0; margin-bottom: 4px; } .face { font-size: 42px; line-height: 1; } .nums { flex: 1; } .two { display: flex; gap: 4px; margin-top: 4px; }
+.red { background: #b0382a; color: #fff; border-color: #7a2218; padding: 3px 6px; font-size: 12px; } .red:hover { background: #c8483a; }
+.g3 { display: flex; gap: 4px; text-align: center; } .g3 > div { flex: 1; border-right: 1px solid #b99c6c; padding: 2px 3px; display: flex; flex-direction: column; gap: 3px; } .g3 > div:last-child { border: 0; } .g3 b { font-size: 16px; } .g3 button { font-size: 11px; padding: 3px 2px; }
+#lens { position: fixed; left: 316px; bottom: 8px; display: flex; flex-direction: column; gap: 6px; } #lens button { width: 44px; height: 44px; border-radius: 50%; font-size: 20px; padding: 0; background: var(--p); box-shadow: 0 2px 6px #0005; }
+#bottom { position: fixed; left: 50%; transform: translateX(-50%); bottom: 8px; display: flex; flex-direction: column; align-items: center; gap: 6px; background: none; border: 0; box-shadow: none; padding: 0; }
+#pop { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: min(640px, 70vw); background: var(--p); border: 3px solid var(--b); border-radius: 6px; padding: 8px; box-shadow: 0 4px 12px #0005; }
+.item { display: flex; flex-direction: column; align-items: flex-start; min-width: 118px; text-align: left; position: relative; padding: 5px 8px 5px 22px; } .item i { position: absolute; left: 6px; top: 8px; width: 11px; height: 11px; border-radius: 2px; } .item small { color: #7a5a3e; font-size: 11px; } .item.on small { color: #fde; }
+#barrow { display: flex; align-items: center; gap: 14px; background: var(--p); border: 3px solid var(--b); border-radius: 6px; padding: 6px 12px; box-shadow: inset 0 0 0 2px #d2b78c, 0 3px 10px #0004; }
+#tabs { display: flex; gap: 6px; } #tabs button { width: 56px; height: 54px; font-size: 26px; padding: 0; } #tabs button.on { background: var(--r); }
+#dia { display: grid; grid-template-columns: repeat(2, 34px); gap: 6px; transform: rotate(45deg); margin: 14px 18px; } #dia button { width: 34px; height: 34px; padding: 0; border-radius: 4px; } #dia span { display: block; transform: rotate(-45deg); font-size: 17px; line-height: 30px; } #dia button.on { background: var(--r); }
+#res { display: flex; gap: 8px; background: var(--p); border: 2px solid var(--b); border-radius: 6px; padding: 3px 10px; } .slot { display: flex; align-items: center; gap: 4px; min-width: 52px; } .slot b { color: var(--r); }
+body.nostart #barrow { opacity: .45; pointer-events: none; }
+@media (max-width: 980px) { #bottom { left: 380px; transform: none; } #lens { left: 316px; } }
+@media (max-width: 760px) { #topbar, #panel, #left { width: 190px; font-size: 11px; } #lens { left: 206px; } #bottom { left: 262px; } #left, #pop small { display: none; } #tabs button { width: 42px; height: 42px; font-size: 20px; } #barrow { gap: 4px; padding: 4px; } }

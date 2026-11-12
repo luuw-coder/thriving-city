@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Thịnh Thế Đại Tống</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Be+Vietnam+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<canvas id="cv"></canvas>
+<div id="tl" class="pn"><div id="dt"></div>
+ <div id="sp"><button data-s="0" aria-label="Tạm dừng">❚❚</button><button data-s="1">▶</button><button data-s="2">▶▶</button><button data-s="3">▶▶▶</button></div></div>
+<div id="nt"></div>
+<div id="rs" class="pn"></div>
+<div id="bar" class="pn"></div>
+<div id="tools" class="pn"><button id="bc">Chat</button><button id="bs">Lưu</button><button id="bk">Khoa cử</button><button id="bp">Chính sách</button><button id="bm">Menu</button></div>
+<div id="pol" class="pn" hidden>
+ <button data-i="0"><b>Khuyến nông</b>Lương thực +40%, lòng dân giảm</button>
+ <button data-i="1"><b>Tăng thuế</b>Thuế gấp đôi, lòng dân giảm mạnh</button>
+ <button data-i="2"><b>Phòng hỏa nghiêm ngặt</b>Nguy cơ cháy -60%, tốn 8 tiền/tháng</button></div>
+<aside id="side" class="pn"><div id="pl"></div><div id="log"></div>
+ <div id="cf"><input id="ci" maxlength="120" placeholder="Nhắn tin..."><button id="cs">Gửi</button></div></aside>
+<div id="menu">
+<section class="card" id="s-login"><h1>Thịnh Thế Đại Tống</h1><p>Nhập tên để vào game. Lần sau mở lại, game tự đăng nhập và giữ nguyên màn chơi, bản đồ bạn đã lưu.</p>
+ <input id="nm" placeholder="Tên của bạn" maxlength="14"><button id="b-in">Vào game</button></section>
+<section class="card" id="s-home" hidden><h1 id="hi"></h1>
+ <button id="b-new">Chơi mới</button><button id="b-con">Tiếp tục màn đã lưu</button><button id="b-edit">Tự tạo bản đồ</button>
+ <div class="row"><input id="cd" placeholder="Mã phòng" maxlength="4"><button id="b-join">Vào phòng</button></div>
+ <p class="er"></p><button id="b-out">Đổi tài khoản</button></section>
+<section class="card wide" id="s-maps" hidden><h2>Chọn bản đồ</h2><div id="mg"></div>
+ <div class="row"><button id="b-solo">Chơi 1 người</button><button id="b-room">Tạo phòng 4 người</button><button class="bk">Quay lại</button></div><p class="er"></p></section>
+<section class="card wide" id="s-saves" hidden><h2>Màn đã lưu</h2><div id="sl"></div><p class="er"></p><button class="bk">Quay lại</button></section>
+<section class="card wide" id="s-edit" hidden><h2>Tạo bản đồ</h2><div class="row" id="tb"></div><canvas id="ec" width="400" height="400"></canvas>
+ <div class="row"><input id="en" placeholder="Tên bản đồ" maxlength="24"><select id="es"><option>16</option><option selected>20</option><option>24</option></select><button id="b-sv">Lưu bản đồ</button></div>
+ <p class="er"></p><button class="bk">Quay lại</button></section>
+</div>
+<div id="end" hidden></div>
+<script type="module" src="menu.js"></script></body></html>
